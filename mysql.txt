@@ -1,0 +1,167 @@
+/*==============================================================*/
+/* DBMS name:      MySQL 5.0                                    */
+/* Created on:     13.7.2013 10:45:54                           */
+/*==============================================================*/
+
+
+/*==============================================================*/
+/* Table: agent                                                 */
+/*==============================================================*/
+create table agent
+(
+   idagent              int not null auto_increment,
+   agent_name           varchar(250) not null,
+   agent_username       varchar(250),
+   agent_password       varchar(250),
+   primary key (idagent)
+);
+
+/*==============================================================*/
+/* Table: queue                                                 */
+/*==============================================================*/
+create table queue
+(
+   idqueue              int not null auto_increment,
+   queue_name           varchar(250) not null,
+   primary key (idqueue)
+);
+
+/*==============================================================*/
+/* Table: agent_to_queue                                        */
+/*==============================================================*/
+create table agent_to_queue
+(
+   idqueue              int not null,
+   idagent              int not null,
+   primary key (idqueue, idagent),
+   constraint FK_agent_to_queue2 foreign key (idagent)
+      references agent (idagent) on delete restrict on update restrict,
+   constraint FK_agent_to_queue foreign key (idqueue)
+      references queue (idqueue) on delete restrict on update restrict
+);
+
+/*==============================================================*/
+/* Table: customer                                              */
+/*==============================================================*/
+create table customer
+(
+   idcustomer           int not null auto_increment,
+   customer_name        varchar(250) not null,
+   customer_username    varchar(250),
+   customer_password    varchar(250),
+   primary key (idcustomer)
+);
+
+/*==============================================================*/
+/* Table: ticket                                                */
+/*==============================================================*/
+create table ticket
+(
+   idticket             int not null auto_increment,
+   ticket_subject       varchar(250) not null,
+   ticket_body          text not null,
+   primary key (idticket)
+);
+
+/*==============================================================*/
+/* Table: service                                               */
+/*==============================================================*/
+create table service
+(
+   idservice            int not null auto_increment,
+   ser_idservice        int,
+   service_name         varchar(250) not null,
+   primary key (idservice),
+   constraint FK_service_to_subservice foreign key (ser_idservice)
+      references service (idservice) on delete restrict on update restrict
+);
+
+/*==============================================================*/
+/* Table: note                                                  */
+/*==============================================================*/
+create table note
+(
+   idnote               int not null auto_increment,
+   idagent              int not null,
+   idticket             int not null,
+   idservice            int not null,
+   age_idagent          int not null,
+   idqueue              int not null,
+   note_type            int not null,
+   note_subject         varchar(250) not null,
+   note_body            text not null,
+   note_worktime        int not null,
+   note_state           char(5) not null,
+   note_priority        int not null,
+   note_delivery        date,
+   primary key (idnote),
+   constraint FK_agent_to_note foreign key (idagent)
+      references agent (idagent) on delete restrict on update restrict,
+   constraint FK_ticket_to_note foreign key (idticket)
+      references ticket (idticket) on delete restrict on update restrict,
+   constraint FK_service_to_note foreign key (idservice)
+      references service (idservice) on delete restrict on update restrict,
+   constraint FK_note_to_agent_owner foreign key (age_idagent)
+      references agent (idagent) on delete restrict on update restrict,
+   constraint FK_note_to_queue foreign key (idqueue)
+      references queue (idqueue) on delete restrict on update restrict
+);
+
+/*==============================================================*/
+/* Table: reminder                                              */
+/*==============================================================*/
+create table reminder
+(
+   idreminder           int not null auto_increment,
+   idnote               int not null,
+   reminder_time        date not null,
+   primary key (idreminder),
+   constraint FK_note_to_reminder foreign key (idnote)
+      references note (idnote) on delete restrict on update restrict
+);
+
+/*==============================================================*/
+/* Table: service_downtime                                      */
+/*==============================================================*/
+create table service_downtime
+(
+   idservicedowntime    int not null auto_increment,
+   idservice            int not null,
+   service_downtime_start date not null,
+   service_downtime_finish date not null,
+   service_downtime_comment text,
+   primary key (idservicedowntime),
+   constraint FK_service_to_service_downtime foreign key (idservice)
+      references service (idservice) on delete restrict on update restrict
+);
+
+/*==============================================================*/
+/* Table: sla                                                   */
+/*==============================================================*/
+create table sla
+(
+   idsla                int not null auto_increment,
+   idservice            int not null,
+   sla_name             varchar(250),
+   sla_reaction_minutes int,
+   sla_response_minutes int,
+   sla_solution_minutes int,
+   primary key (idsla),
+   constraint FK_service_to_sla foreign key (idservice)
+      references service (idservice) on delete restrict on update restrict
+);
+
+/*==============================================================*/
+/* Table: ticket_to_customer                                    */
+/*==============================================================*/
+create table ticket_to_customer
+(
+   idcustomer           int not null,
+   idticket             int not null,
+   primary key (idcustomer, idticket),
+   constraint FK_ticket_to_customer2 foreign key (idticket)
+      references ticket (idticket) on delete restrict on update restrict,
+   constraint FK_ticket_to_customer foreign key (idcustomer)
+      references customer (idcustomer) on delete restrict on update restrict
+);
+

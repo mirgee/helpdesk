@@ -1,0 +1,60 @@
+{block content}
+
+<h1 n:block="heading">Nový ticket</h1>
+
+<div class="form ticketForm">
+{form newTicketForm}
+<table>
+<tr>
+    <td>
+        <fieldset>
+        <legend>{label idcustomer /}</legend>
+        {input idcustomer autofocus => true} 
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label idagent /}</legend>
+        {input idagent}
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label idservice /}</legend>
+        {input idservice}
+        </fieldset>
+    </td>
+</tr>
+<tr>
+    <td>
+        <fieldset>
+        <legend>{label idqueue /}</legend>
+        {input idqueue}
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label note_priority /}</legend>
+        {input note_priority}
+        </fieldset> 
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label note_delivery /}</legend>
+        {input note_delivery}
+        </fieldset>
+    </td>
+</tr>
+<tr>
+    <td colspan="3">
+        <fieldset>
+        {label note_subject /}<br>
+        {input note_subject}
+        <p>{input note_body}</p>
+        {input submit}
+        </fieldset>
+    </td>
+</tr>
+</table>
+{/form}
+</div>

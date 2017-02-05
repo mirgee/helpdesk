@@ -1,0 +1,25 @@
+SELECT t.idticket, n.note_subject, c.customer_name, a.agent_name, n.note_state, n.note_priority, n.note_delivery FROM (((ticket t LEFT JOIN note n USING (idticket)) LEFT JOIN agent a ON (a.idagent = n.idagent)) LEFT JOIN ticket_to_customer ttc ON (ttc.idticket = t.idticket)) LEFT JOIN customer c ON (c.idcustomer = ttc.idcustomer) WHERE n.idnote = (SELECT idnote FROM note WHERE idticket=t.idticket ORDER BY note_worktime DESC LIMIT 1);
+
+
+SELECT t.idticket, n.note_subject, c.customer_name, a.agent_name, n.note_state, n.note_priority, n.note_delivery
+FROM (
+(
+(
+ticket t
+LEFT JOIN note n
+USING ( idticket )
+)
+LEFT JOIN agent a ON ( a.idagent = n.idagent )
+)
+LEFT JOIN ticket_to_customer ttc ON ( ttc.idticket = t.idticket )
+)
+LEFT JOIN customer c ON ( c.idcustomer = ttc.idcustomer )
+WHERE n.idnote = (
+SELECT idnote
+FROM note
+WHERE idticket = t.idticket
+ORDER BY note_created DESC
+LIMIT 1 )
+ORDER BY t.idticket ASC
+
+SELECT t.idticket, n.note_subject, c.customer_name, a.agent_name, n.note_state, n.note_priority, n.note_delivery FROM (((ticket t LEFT JOIN note n USING (idticket)) LEFT JOIN agent a ON (a.idagent = n.idagent)) LEFT JOIN ticket_to_customer ttc ON (ttc.idticket = t.idticket)) LEFT JOIN customer c ON (c.idcustomer = ttc.idcustomer) WHERE n.idnote = (SELECT idnote FROM note WHERE idticket=t.idticket ORDER BY note_created DESC LIMIT 1) ORDER BY t.idticket ASC

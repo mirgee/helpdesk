@@ -1,0 +1,88 @@
+{**
+ * My Application layout template.
+ *
+ * @param string   $basePath web base path
+ * @param string   $robots   tell robots how to index the content of a page (optional)
+ * @param array    $flashes  flash messages
+ *}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="robots" content="{$robots}" n:ifset="$robots">
+  
+    <title>{block title|striptags}Helpdesk{/block}</title>
+
+    {*<link rel="stylesheet" href="{$baseUri}/css/bootstrap.min.css">*}
+    <link rel="stylesheet" type="text/css" href="{$basePath}/styles/jquery-ui-timepicker-addon.css">
+    <link rel="stylesheet" media="screen,projection,tv" href="{$basePath}/css/screen.css">
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/ui-darkness/jquery-ui.min.css" />
+    <link rel="shortcut icon" href="{$basePath}/favicon.ico">
+
+    {block head}{/block}
+</head>
+
+<body>
+    <div id="header">
+            <div class="title"><a href="{link Dashboard:}"></a></div>
+            {if $user->isLoggedIn()}
+            <div class="user">
+                <span class="avatar"> Jste přihlášen jako <strong><span style="color:orange;">{$user->getIdentity()->agent_name}</span></strong></span>
+                <a n:href="signOut!">Odhlásit se</a>
+            </div>
+            {/if}
+    </div>
+    <table id="navigation">
+        <tr>
+                <td {ifCurrent Dashboard:*}class="active"{/ifCurrent}><a href="{link Dashboard:}">Dashboard</a></td>
+                <td {ifCurrent Customers:*}class="active"{/ifCurrent}><a href="{link Customers:}">Zákazníci</a></td>
+                <td {ifCurrent Services:*}class="active"{/ifCurrent}><a href="{link Services:}">Služby</a></td>
+                <td {ifCurrent Config:*}class="active"{/ifCurrent}><a href="{link Config:}">Konfigurace</a></td>
+                <td {ifCurrent Dashboard:NewTicket}class="active"{/ifCurrent}><a href="{link Dashboard:NewTicket}">Nový ticket</a></td>
+        </tr>
+    </table>
+    {include #heading}
+    {control upcoming}
+    <div id="container">
+            <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+            {include #content}   
+    </div>
+    {block scripts}
+    <script src="{$basePath}/js/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.0/jquery-ui.min.js"></script>
+    <script src="{$basePath}/js/nette.ajax.js"></script>
+    <script src="{$basePath}/js/main.js"></script>
+    <script src="{$basePath}/js/netteForms.js"></script>
+    <script src="{$basePath}/js/jquery-ui-timepicker-addon.js"></script>
+    <script src="{$basePath}/js/dateInput.js"></script>
+    <script src="{$basePath}/js/script.js"></script>
+    <script>
+$('#container').on('click', '#notesTable tbody tr',
+    function(){
+        var idnote = $(this).children('td.grid-cell-idnote').text().replace(/\s/g, '');
+        $.ajax({
+            url: {link showbody!},
+            type: 'GET',
+            data: { 'idnote' : idnote },
+            success: function(payload){
+                $('#ajaxtext').html(payload.body);
+            }
+         });
+    }
+);
+
+$('table#dashboard tbody tr').click(function(){
+    var idticket = $(this).children('td.grid-cell-idticket').text().replace(/\s/g, '');
+    $.nette.ajax({
+        url: {link details!},
+        type: 'GET',
+        data: { 'idticket' : idticket }
+     });
+});
+
+    </script>
+    {/block}
+</body>
+</html>

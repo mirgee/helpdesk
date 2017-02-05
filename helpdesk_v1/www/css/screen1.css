@@ -1,0 +1,274 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, hr {
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    border-top-width: 0px;
+    border-right-width-value: 0px;
+    border-bottom-width: 0px;
+    border-left-width-value: 0px;
+    border-top-style: none;
+    border-right-style-value: none;
+    border-bottom-style: none;
+    border-left-style-value: none;
+    border-image-source: none;
+    border-image-slice: 100% 100% 100% 100%;
+    border-image-width: 1 1 1 1;
+    border-image-outset: 0 0 0 0;
+    border-image-repeat: stretch stretch;
+    outline-width: 0px;
+    outline-style: none;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+    vertical-align: baseline;
+    background-image: none;
+    direction: inherit;
+}
+
+a {
+    color: #BBBBBB;
+    text-decoration: none;
+}
+
+a:hover, a:focus {
+    color: #ff7722;
+}
+
+ol, ul {
+  list-style-type: none;
+  list-style-image: none;
+  list-style-position: outside;
+}
+
+/*  HEADER  */
+div#header {
+    height: 72px;
+    padding-top: 10px;
+    padding-right: 0px;
+    padding-bottom: 12px;
+    padding-left: 0px;
+    background-color: transparent;
+    background-image: url("../images/header_bg.png");
+    background-repeat: repeat-x;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+    color: #ffffff;
+    position: relative;
+    z-index: 10;
+}
+
+#header div.title {
+  top: -4px;
+  right: 38px;
+  width: 244px;
+  height: 67px;
+  background-color: transparent;
+  background-image: url("../img/logo_bg.png");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: 0% 0%;
+  background-clip: border-box;
+  background-origin: padding-box;
+  background-size: auto auto;
+  position: absolute;
+}
+
+#header div.user {
+    top: 8px;
+    right: 17px;
+    padding-top: 4px;
+    padding-right: 25px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    color: #bbbbbb;
+    font-size: 11px;
+    position: absolute;
+    cursor: default;
+}
+
+/*    MENU    */
+#navigation {
+    top: 51px;
+    left: 10px;
+    position: absolute;
+    z-index: 20;
+}
+
+#navigation > li, #Navigation > li > a {
+    background-color: transparent;
+    background-image: url("../images/navigation_sprite.png");
+    background-repeat: repeat-x;
+    background-attachment: scroll;
+    background-position: 0px 0px;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: auto auto;
+}
+
+#navigation > li {
+  padding-left: 2px;
+  padding-right: 0px;
+  float: left;
+  background-position: left top;
+  position: relative;
+}
+
+#navigation > li > a {
+    height: 31px;
+    padding-top: 4px;
+    padding-right: 26px;
+    padding-bottom: 3px;
+    padding-left: 4px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 12px;
+    color: #dddddd;
+    background-position: right top;
+    text-transform: uppercase;
+    display: block;
+}
+
+#navigation > .active
+{
+  background-position: left -76px;
+  background-color: #ff9922;
+  z-index: 90;
+}
+
+#navigation > li:hover > a {
+    color: #ffffff;
+    background-position: right -38px;
+    background-color: #f2b13e;
+}
+
+/*  CONTENT  */
+div#container {
+    width: 700px;
+    margin: 0 auto;
+    background-color: #0A1B30;
+    border-radius: 20px;
+}
+
+#container h1 {
+    margin: 20px;
+}
+
+table.grido {
+    width: 90%;
+    margin: 20px auto;
+}
+table.ticketDetail {
+    display: inline;
+    /*float: left;*/
+    width: 220px;
+    height: 500px;
+    margin-left: 20px;
+    margin-right: 0px;
+    margin-top: 0;
+}
+
+#snippet-notes-grid{
+    margin-left: 35px;
+    width: 200px;
+}
+
+#ajaxtext {
+    display: block;
+    width: 400px;
+    height: 100px;
+    margin: 40px auto;
+    background-color: whitesmoke;
+    border: #093366 solid 1px;
+    text-align: center;
+    vertical-align: middle;
+}
+table.grido td {
+    text-align: center;
+}
+
+table.grido tr.even {
+    background-color: #093366;
+}
+
+table.grido tr.active {
+    background-color:  #0081c2;
+}
+
+table.grido th {
+    background-color: #085AA3;
+}
+
+table.grido tfoot {
+    height: 35px;
+    vertical-align: bottom;
+}
+
+table#upcoming {
+    width: 300px;
+    position: relative;
+    margin-top: -400px;
+    margin-right: 40px;
+    float: right;  
+}
+table#upcoming tfoot {
+    display: none;
+}
+th.grid-header-downtime_1month_percent, th.grid-header-downtime_3month_percent {
+    width: 10%;
+}
+
+#frmform-buttons-reset{
+    display: none;
+}
+
+div.form{
+    margin-left: 25px;
+}
+
+div.outer{
+    margin-left: 40px;
+}
+
+/*  FLASHES  */
+div.flash {
+	padding: .8em;
+	margin-bottom: 1em;
+	border: 2px solid #ddd;
+}
+
+div.flash.success {
+	background: #E6EFC2;
+	color: #264409;
+	border-color: #C6D880;
+}
+
+div.flash.error {
+	background: #FBE3E4;
+	color: #8a1f11;
+	border-color: #FBC2C4;
+}
+
+
+form ul.error {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+form ul.error li {
+	display: block;
+	padding: .4em;
+	margin-bottom: 1em;
+	border: 2px solid #FBC2C4;
+	background: #FBE3E4;
+	color: #8a1f11;
+}

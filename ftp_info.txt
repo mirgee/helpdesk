@@ -1,0 +1,7 @@
+URL: helpdesk.diteco.eu
+
+Server: aeris.havliczech.eu
+
+FTP: ftphelpdesk / HelpDesk513
+
+DB: dbhelpdesk / dbuhelpdesk / HelpDesk513

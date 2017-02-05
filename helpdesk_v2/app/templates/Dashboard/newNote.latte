@@ -1,0 +1,75 @@
+{layout "../@layoutForm.latte"}
+
+{block form}
+<h1 n:block="heading">Nová poznámka k ticketu {$idticket}</h1>
+
+<div class="form newNoteForm">
+{form newNoteForm}
+{control $form errors}
+
+<table>
+<tr>
+    <td>
+        <fieldset>
+        <legend>{label idagent /}</legend>
+        {input idagent}
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label idqueue /}</legend>
+        {input idqueue}
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label idservice /}</legend>
+        {input idservice}
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label note_state /}</legend>
+        {input note_state}
+        </fieldset>
+    </td>
+</tr>
+<tr>
+    <td>
+        <fieldset>
+        <legend>{label note_type /}</legend>
+        {input note_type}
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label note_priority /}</legend>
+        {input note_priority}
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label note_worktime /}</legend>
+        {input note_worktime}
+        </fieldset>
+    </td>
+    <td>
+        <fieldset>
+        <legend>{label note_delivery /}</legend>
+        {input note_delivery}
+        </fieldset>
+    </td>
+</tr>
+<tr>
+    <td colspan="4">
+        <fieldset>
+        {label note_subject/}<br>
+        {input note_subject}
+        <p>{input note_body}</p>
+        {input submit}
+        </fieldset>
+    </td>
+</tr>
+</table>
+{/form}
+</div>

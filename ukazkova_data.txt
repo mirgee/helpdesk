@@ -1,0 +1,140 @@
+﻿INSERT INTO `helpdesk`.`agent` (
+`idagent` ,
+`agent_name` ,
+`agent_username` ,
+`agent_password`
+)
+VALUES (
+NULL , 'Miroslav Kovář', 'mere.gee', '1234'
+), (
+NULL , 'Lukáš Holub', 'srdicko', '1234'
+), (
+NULL , 'Miroslav Němec', 'nazi', '1234'
+), (
+NULL , 'Milan Šaloun', 'mila', '1234'
+), (
+NULL , 'Libor Novák', 'lajbr', '1234'
+);
+
+INSERT INTO `helpdesk`.`customer` (
+`idcustomer` ,
+`customer_name` ,
+`customer_username` ,
+`customer_password`
+)
+VALUES (
+NULL , 'Saša Zákazník', 'sasha', '1234'
+), (
+NULL , 'Pavlína Zákazníková', 'pavlicka', '1234'
+), (
+NULL , 'Filip Zákazník', 'filipko', '1234'
+), (
+NULL , 'Miloš Zákazník', 'milosh', '1234'
+), (
+NULL , 'Franta Zákazník', 'frigl', '1234'
+);
+
+INSERT INTO `helpdesk`.`queue` (
+`idqueue` ,
+`queue_name`
+)
+VALUES (
+NULL , 'Do zítra'
+), (
+NULL , 'Do týdne'
+), (
+NULL , 'Do měsíce'
+), (
+NULL , 'Do roka'
+), (
+NULL , 'Ani nezačneme'
+);
+
+INSERT INTO `helpdesk`.`service` (
+`idservice` ,
+`ser_idservice` ,
+`service_name`
+)
+VALUES (
+NULL , NULL , 'Instalace internetu'
+), (
+NULL , NULL , 'Pokládání kabeláže'
+), (
+NULL , NULL , 'VOIP'
+), (
+NULL , NULL , 'Instalace STB'
+);
+
+INSERT INTO `helpdesk`.`ticket` (
+`idticket` ,
+`ticket_subject` ,
+`ticket_body`
+)
+VALUES (
+NULL , 'Nefunkční TP-Link', 'Lorem ipsum blá blá kecy.'
+), (
+NULL , 'Stížnost na Holuba', 'Lorem ipsum blá blá kecy.'
+), (
+NULL , 'Přestřižený kabel', 'Lorem ipsum blá blá kecy.'
+), (
+NULL , 'Chybějící trafo', 'Lorem ipsum blá blá kecy.'
+), (
+NULL , 'Konflikt adres', 'Lorem ipsum blá blá kecy.'
+), (
+NULL , 'Špatný signál', 'Lorem ipsum blá blá kecy.'
+), (
+NULL , 'Nic nefunguje', 'Lorem ipsum blá blá kecy.'
+), (
+NULL , 'Rekonstrukce budovy', 'Lorem ipsum blá blá kecy.'
+), (
+NULL , 'Nefunkční anténa', 'Lorem ipsum blá blá kecy.'
+), (
+NULL , 'Rozbitý STB', 'Lorem ipsum blá blá kecy.'
+);
+
+INSERT INTO `helpdesk`.`ticket_to_customer` (
+`idcustomer` ,
+`idticket`
+)
+VALUES (
+'2', '1'
+), (
+'3', '2'
+), (
+'1', '4'
+), (
+'5', '5'
+), (
+'3', '6'
+), (
+'4', '7'
+), (
+'1', '8'
+), (
+'4', '9'
+), (
+'1', '3'
+), (
+'5', '10'
+);
+
+INSERT INTO `helpdesk`.`note` (`idnote`, `idagent`, `idticket`, `idservice`, `age_idagent`, `idqueue`, `note_type`, `note_subject`, `note_body`, `note_worktime`, `note_state`, `note_priority`, `note_delivery`) VALUES (NULL, '1', '1', '2', '3', '2', '1', 'Předmět', 'asdasd', '5', '1', '5', '2013-07-10'), (NULL, '2', '2', '2', '3', '2', '1', 'Založení', 'asdasdasd', '1', '1', '2', '2013-07-10'), (NULL, '4', '3', '3', '1', '5', '1', 'Založení', 'sxcvx', '8', '1', '5', '2013-07-15'), (NULL, '1', '4', '3', '4', '1', '1', 'Založení', 'asdf', '5', '1', '4', '2013-07-09'), (NULL, '4', '5', '1', '5', '1', '1', 'Založení', 'avcxbn', '1', '1', '4', '2013-07-20'), (NULL, '4', '6', '2', '2', '4', '1', 'Založení', 'bvxcbxcv', '3', '1', '4', '2013-07-10'), (NULL, '2', '7', '2', '2', '3', '1', 'Založení', 'avxcv', '2', '1', '3', '2013-07-19'), (NULL, '2', '8', '1', '4', '2', '1', 'Založení', 'asdasd', '4', '1', '2', '2013-07-02'), (NULL, '2', '9', '2', '4', '1', '1', 'Založení', 'svxcvy', '3', '1', '1', '2013-07-01'), (NULL, '1', '10', '2', '1', '5', '1', 'Založení', 'asdasd74', '2', '1', '5', '2013-07-18');
+
+INSERT INTO `helpdesk`.`agent_to_queue` (
+`idqueue` ,
+`idagent`
+)
+VALUES (
+'1', '1'
+), (
+'2', '2'
+), (
+'3', '3'
+), (
+'4', '4'
+), (
+'5', '5'
+);
+
+
+
